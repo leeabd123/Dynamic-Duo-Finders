@@ -37,12 +37,15 @@ The second algorithm is used to determine strongly connected components. This ca
 Week 1: Create classes to store data
 -Parse through the dataset and store data locally
 -Start reading about Dijkstars Algorithm/Tarjan’s Algorithm and write some pseudo code for our project
+
 Week 2: Read data into storage and begin algorithm development
 -Begin writing Dijkstars and Tarjan’s Algorithm
 -Write test cases for out data to see if our algorithm is working properly
 -And that were are not parsing any invalid ID’s or parsing the same ID’s twice for instance 
+
 Week 3: Complete algorithm
 -Store all connections of a user in a vector.
+
 Week 4: Add extra parameters and functionality
 -Add some features to our algorithm such as find my xth degree connections
 -If time permits create a visual graph that personalized to each users connections
