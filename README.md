@@ -1,4 +1,4 @@
-** Leading Question ** 
+** Leading Question
 Some of the most important problems are the ones we face every day.  For the residents of Oldenburg, this includes driving around the city to get from place to place. The overarching question is, what is the best way to get around the city? This is a very broad question, but we can split it into sub-questions that we can answer with our graph algorithms. Namely:
 What is the shortest way from one place to another?
 What is likely to be the busiest intersection?
