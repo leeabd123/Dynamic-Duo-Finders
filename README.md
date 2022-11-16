@@ -1,52 +1,46 @@
-# Dynamic-Duo-Finders
+** Leading Question ** 
+Some of the most important problems are the ones we face every day.  For the residents of Oldenburg, this includes driving around the city to get from place to place. The overarching question is, what is the best way to get around the city? This is a very broad question, but we can split it into sub-questions that we can answer with our graph algorithms. Namely:
+What is the shortest way from one place to another?
+What is likely to be the busiest intersection?
+What is one way to explore the city and drive through the entire city?
+We have data with Nodes for different points in Oldenburg.  Each node contains an ID and an x and y coordinate. We also have data for the edges (roads) connecting them, each of which has a starting node id, ending node id, and distance between. The distance between can be used to determine the weights of the edges. With that, we can solve the first question using Dijkstra’s Algorithm, we can solve the second using the betweenness centrality algorithm, and we can use DFS for the third.
 
-**Leading Question**
-Given a dataset composed of Github users’ mutual friendships, how can we identify promising collaborations between developers with similar interests? 
-The basis of this is that friendships on github are based on shared interests. Therefore, having a mutual friend with another user is a promising indication that there is potential shared interest. 
-So, what potential friendships between two users/groups are possible based on their mutual friends?
+** Dataset Acquisition **
 
-**Dataset Acquisition**
-We are using the GitHub Social Network dataset (http://snap.stanford.edu/data/github-social.html) that was given. It contains data for 37,000 users, and the friendships between them. Specifically, it lists in each row of its csv two user IDs for two users that have a mutual friendship. The IDs are integers from 0 to 37,699, with the entire range being full.  Each user can be viewed as a node, and each friendship, of which there are 289,003, can be viewed as an edge between those two nodes. This data only includes mutual friendships and it does not include any measure of strength, so it is undirected and unweighted. There is either an edge between two nodes or there isn’t.
+** Data Format **
+We used the City of Oldenburg Road Network from the Real Datasets for Spatial Databases: Road Networks and Points of Interest (https://www.cs.utah.edu/~lifeifei/SpatialDataset.htm). Our dataset has 2 CSV’s one for Oldenburgs Network's Nodes that is 6105 lines long with a line for each node, made up of Node ID, Normalized X Coordinate, Normalized Y Coordinate, the other is 7034 lines long for Oldenburg’s Road Network’s Edges (one edge per line) made up of Edge ID, Start Node ID, End Node ID, L2 Distance. We plan to use all of the data since the dataset is a manageable size.  Because we have a start and end node for each edge, this is a directed graph.
 
-**Data Format**
-There are a lot of files in the zip but we want to focus on relationships between users, and the data for that is a microsoft excel CSV.  Each row includes two user IDs, and it represents a relationship of mutual friendship between the users. It is a pretty large dataset with around 37,000 users and 280,000 relationships between them. We plan on using the entire dataset unless we see it taking too much time or processing power. In the end, our data would be a set of connected components, and in each one the users are all connected through some mutual friendship(s). If there is no connection between them, they would be in different connected components. If we see that the data is taking too much to work with, we might focus on relationships within a single connected component.
+** Data Correction **
+All of our Node IDs are integers and they range from 0 to 6104. While parsing through the Node Ids we can make sure that all of the Node IDs we receive are in that range or they’re invalid. We can also ensure that no node is accounted for twice and we don’t want any issues with the edges between our nodes. Finally, we have to ensure that each row contains two distinct node IDs. If we come across an edge that doesn't represent a meaningful relationship (one with a distance between two valid nodes) then we can disregard it entirely.
 
-**Data Correction**
-All of our user IDs are integers, and they range from 0 to 37699. While parsing through the relationships, we can make sure that all of the user IDs we receive are in that range or they’re invalid. We can also ensure that no friendship is accounted for twice, as we don’t want any issues with the edges between our nodes. Finally, we have to ensure that each row actually contains two distinct user IDs. If we come across a row that is missing that (one ID or none), we can disregard it entirely, as it does not represent a meaningful relationship. The same can be said for a friendship between a user and themself.
+** Data Storage **
+To store our data will be creating a graph with a Graph Class. We will also have a Node Class. Each node will have a key, a value, and a vector of pairs that stores each outgoing node and the distance to that node. However, instead of storing the distance as it is, we plan on storing 100/distance, so that the smaller distances will be weighted more. In our graph class, we will store all of the nodes of our graph in a vector of Nodes. The index of the vector will match with the Node ID, which works because our Node IDs are exactly the integers from 0 to 6104. The value stored at each index will be the Node with the matching ID.  The storage cost for the vector of Nodes is O(N), and the combined complexity for the edges between them is O(E), where N is the number of nodes and E is the number of edges. Overall, the sum of those two would be O(E+N).
 
-**Data Storage**
-Every user will have a node, and that node will store the user’s ID, and a vector of pointers to all of their mutual friends. We can also store each node in a vector. Whose size is the number of users we have so that we can access the nodes easily for the purpose of adding neighbors. This should be easy to do because the user IDs are consecutive integers starting at 0, so the user ID lines up perfectly with the indices of the vector, and we can access any node by the ID in O(1) time to add neighbors or to access the neighbor vector.  However, this vector is only there for the sake of making sure we don’t lose any nodes that are not connected to the others.  The main graph functionality is implemented through the nodes themselves and the pointers to their neighboring nodes.
+** Algorithm **
+
+** Function Inputs **
+We have 2 CSV files with Nodes and edges as our input. In order to get the distances between 2 nodes we would have to go through the first CSV file of Node IDs or intersections and create nodes for each intersection and the edges of our graph would be using the 2nd CSV file of Edges to create the edges or roads of our graph. After we build our graph we would then use algorithms. Then we would create 3 functions that take an input of 2 nodes. One function would calculate the shortest way from one place to another using Dijkstra’s algorithm. The 2nd function would calculate was is more likely to be the busiest intersection using the betweenness centrality algorithm. The third function would give the user a way to drive through the entire city and we would be using DFS to compute this.
+
+** Function Outputs **
+For our first function, we want to output the shortest place from one place to another. So we want to output a vector that stores every node visited along the path from the first node to the destination.  For the busiest intersection function, we want to output the node or the intersection that is the busiest. For our last function, we would also like to output a vector of nodes or road intersections that shows a way to explore the city. 
+
+** Function Efficency **
+We are using 3 algorithms. Dijkstra’s algorithm, BFS, and the Betweenness algorithm. Dijkstra's algorithm shortest path algorithm has a time complexity of O(ElogV) where V is the number of vertices and e is the number of edges and the space complexity is O(V^2).  Breadth-first Search or (BFS) is O(V+E) time complexity and the space complexity is O(|V|). The betweenness algorithm’s time complexity is O(V+E) and the space complexity is O(V+E).  
 
 
+** Timeline **
 
+** Week of: **
 
+Nov 14 (this week):
+Finish project proposal
+parse through csv
 
+Nov 21:
+Implement BFS and Closest Node algorithms with test cases
 
-**Graph Algorithms:**
-Dijkstra's algorithm:
-https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+Nov 28:
+Implement Betweenness Algorithm for busiest intersection with test cases
 
-Tarjan’s Algorithm:
-https://en.wikipedia.org/wiki/Strongly_connected_component#Algorithms
-
-Algorithms that will be beneficial to this project are Dijkstra’s algorithm and Tarjan’s algorithm. The first one is used to calculate the shortest path between two nodes of a graph. The input would be two user ids and the output would be the shortest path between those users. This algorithm is stated to have an O((N+E)log(E)) runtime, where N is the number of nodes and E is the number of edges.
-The second algorithm is used to determine strongly connected components. This can help you find friend/creator groups rather than individual creators. We could use this to identify these groups, then store a node in the strongly connected component and use something like Dijkstra’s algorithm to find how relevant that friend/creator/developer group may be to any user given their ID. The input would be a single user id. The output would be the largest strongest connected graph formed from the starting user id.
-
-**Timeline:**
-
-Week 1: Create classes to store data
--Parse through the dataset and store data locally
--Start reading about Dijkstars Algorithm/Tarjan’s Algorithm and write some pseudo code for our project
-
-Week 2: Read data into storage and begin algorithm development
--Begin writing Dijkstars and Tarjan’s Algorithm
--Write test cases for out data to see if our algorithm is working properly
--And that were are not parsing any invalid ID’s or parsing the same ID’s twice for instance 
-
-Week 3: Complete algorithm
--Store all connections of a user in a vector.
-
-Week 4: Add extra parameters and functionality
--Add some features to our algorithm such as find my xth degree connections
--If time permits create a visual graph that personalized to each users connections
-
+Dec 5:
+If anything is left or didn't get done, finish it.
