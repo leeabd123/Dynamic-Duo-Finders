@@ -6,11 +6,12 @@ using namespace std;
 
 #include <iostream>
 #include <vector>
+#include <pair>
 
 struct Node {
     Node(int dat): id(dat) {}
     int id;
-    vector<int> neighbors;
+    vector<pair<int, double>> neighbors;
 };
 
 #endif
