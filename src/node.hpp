@@ -11,7 +11,7 @@ using namespace std;
 struct Node {
     Node(int dat): id(dat) {}
     int id;
-    vector<pair<int, bool>> neighbors;
+    vector<pair<int, double>> neighbors;
 };
 
 #endif
