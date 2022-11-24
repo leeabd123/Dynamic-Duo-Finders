@@ -8,18 +8,25 @@ using namespace std;
 #include <vector>
 #include "node.hpp"
 #include <queue>
+#include <node.hpp>
+#include <List>
+#include <ArrayList>
+
 
 class Graph {
     public:
     int V;
-    std::unordered_set<int> *l;
-    Graph(int V) {
+    list<int> *l;
+    Graph(int V) { //specify number of verticies
         this->V = V;
-        l = new std::unordered_set<int>[V];
+        //each term in the list is a pointer to a list
+        // 0 -> <1,2,3...
+        // 1 -> <2,4,5...
+        l = new list<int>[V];
     }
-    void addEdge(int x, int y) {
-        l[x].insert(y);
-        l[y].insert(x);
+    void addEdge(Node x, Node y) {
+        l[x.id].insert(y.id);
+        l[y.id].insert(x.id);
     }
     void printAdjList() {
         for (int i = 0; i < V; i++) {
@@ -28,6 +35,17 @@ class Graph {
                 std::cout << n << ",";
             }
             std::cout << std::endl;
+        }
+    }
+    void addNode(Node node) {
+        bool is_there = false;
+        for (int node : l) {
+            if (l == node.id) {
+                is_there = true;
+            }
+        }
+        if (!is_there) {
+           l.insert(node.id);
         }
     } 
 
