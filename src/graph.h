@@ -56,7 +56,7 @@ class Graph {
     // } 
 
     // returns the ids of the nodes visited started from input node id in a bfs
-    vector<int> BFS(Node start_id);
+    vector<int> BFS(int start_id);
 
 
     private:

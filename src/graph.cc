@@ -35,7 +35,8 @@ Graph::Graph(const std::string & filename) {
 }
 
 
-vector<int> Graph::BFS(Node start) {
+vector<int> Graph::BFS(int start_id) {
+    Node start = nodes_.at(start_id);
     vector<bool> visited(nodes_.size(), false);
     vector<int> traversal;
     queue<Node> q;
