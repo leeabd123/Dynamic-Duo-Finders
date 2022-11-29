@@ -3,24 +3,24 @@
 
 using namespace std;
 
-vector<int> Graph::BFS(int start_id) {
+vector<int> Graph::BFS(Node start) {
     vector<bool> visited(nodes_.size(), false);
-    vector<int> trav;
-    queue<int> q;
-    q.push(start_id);
-    visited[start_id] = true;
+    vector<int> traversal;
+    queue<Node> q;
+    q.push(start);
+    visited[start.id] = true;
 
     while (!q.empty()) {
-        int cur_id = q.front();
+        Node cur_node = q.front();
         q.pop();
-        trav.push_back(cur_id);
-        visited[cur_id] = true;
-        for(unsigned i = 0; i < nodes_[cur_id].neighbors.size(); i++) {
-            if (!visited[nodes_[cur_id].neighbors[i].first]) {
-                q.push(nodes_[cur_id].neighbors[i].first);
+        traversal.push_back(cur_node.id);
+        visited[cur_node.id] = true;
+        for(auto neighbor: cur_node.neighbors) {
+            if (!visited[neighbor.first]) {
+                q.push(nodes_.at(neighbor.first));
             }
         }
 
     }
-    return trav;
+    return traversal;
 }
