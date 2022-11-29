@@ -6,13 +6,22 @@
 #include "node.h"
 #include <queue>
 #include <list>
+#include "utils.h"
+
+#include <utility>
+#include <string>
+#include <map>
+#include <set>
+#include <cassert>
+#include <fstream>
 // #include <ArrayList>
 
 using namespace std;
 
 class Graph {
     public:
-    Graph() {}
+    Graph(){}
+    Graph(const std::string & filename);
     Graph(vector<int> node_ids) {
         for (int id: node_ids) {
             Node node(id);
@@ -38,6 +47,7 @@ class Graph {
         Node node(node_id);
         nodes_.push_back(node);
     }
+    int size() {return nodes_.size();};
     // void addNode(Node node) {
     //     auto lookup = find(nodes_.begin(), nodes_.end(), node);
     //     if (lookup == nodes_.end()) {
@@ -52,3 +62,9 @@ class Graph {
     private:
     vector<Node> nodes_;
 };
+
+std::string file_to_string(const std::string & filename);
+std::string TrimRight(const std::string & str);
+std::string TrimLeft(const std::string & str);
+std::string Trim(const std::string & str);
+int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields);
