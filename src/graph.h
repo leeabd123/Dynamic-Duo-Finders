@@ -12,9 +12,11 @@ using namespace std;
 
 class Graph {
     public:
-    int V;
-    Graph(int V) { //specify number of verticies
-        this->V = V;
+    Graph(vector<int> node_ids) {
+        for (int id: node_ids) {
+            Node node(id);
+            nodes_.push_back(node);
+        }
     }
     void addEdge(Node x, Node y, double distance) {
         pair<int, double> node1(x.id, 100/distance);
