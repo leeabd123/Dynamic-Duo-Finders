@@ -1,17 +1,16 @@
 #ifndef GRAPH_HPP
 #define GRAPH_HPP
 
-using namespace std;
 
 
 //#include <iostream>
 #include <vector>
-#include "node.hpp"
+#include "node.h"
 #include <queue>
-#include <node.hpp>
-#include <List>
-#include <ArrayList>
+#include <list>
+// #include <ArrayList>
 
+using namespace std;
 
 class Graph {
     public:
