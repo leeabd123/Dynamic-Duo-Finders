@@ -11,13 +11,13 @@ vector<int> Graph::BFS(int start_id) {
     visited[start_id] = true;
 
     while (!q.empty()) {
-        int cur_node = q.front();
+        int cur_id = q.front();
         q.pop();
-        trav.push_back(cur_node);
-        visited[cur_node] = true;
-        for(unsigned i = 0; i < cur_node.neighbors.size(); i++) {
-            if (!visited[cur_node.neighbors[i].first]) {
-                q.push(cur_node.neighbors[i].first);
+        trav.push_back(cur_id);
+        visited[cur_id] = true;
+        for(unsigned i = 0; i < nodes_[cur_id].neighbors.size(); i++) {
+            if (!visited[nodes_[cur_id].neighbors[i].first]) {
+                q.push(nodes_[cur_id].neighbors[i].first);
             }
         }
 
