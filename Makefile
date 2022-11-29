@@ -4,7 +4,7 @@ CXX_FLAGS=-std=c++20 -Iincludes -g -fstandalone-debug -O0 -Wall -Wextra -Werror
 exec: bin/exec
 tests: bin/tests
 
-bin/exec: ./src/graph.cc ./src/main.cc
+bin/exec: ./src/graph.cpp ./src/main.cpp
 	$(CXX) $(CXX_FLAGS) $^ -o $@
 
 bin/tests: ./tests/tests.cc ./src/main.cc ./src/graph.cc

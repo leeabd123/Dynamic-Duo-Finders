@@ -1,17 +1,13 @@
-#ifndef NODE_HPP
-#define NODE_HPP
-
-using namespace std;
-
+#pragma once
 
 #include <iostream>
 #include <vector>
-#include <pair>
+#include <utility>
+
+using namespace std;
 
 struct Node {
     Node(int dat): id(dat) {}
     int id;
     vector<pair<int, double>> neighbors;
 };
-
-#endif
