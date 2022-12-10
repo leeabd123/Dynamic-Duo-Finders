@@ -89,11 +89,11 @@ vector<int> Graph::Shortest_Path_Algo() {
         spset[i] = false;
 
     }
-    distances[src_node] = 0; //setting the first to 0 the rest to inf
+    distances[src_node] = 0; 
     for (int c = 0; c < (size() - 1); c++) {
-        int u = Min_Dist(distances, spset); //picking the index of vertex with the min distane value 
+        int u = Min_Dist(distances, spset); 
         spset[u] = true;
-        for (int v = 0; v < size(); v++) { //update the values of its neighbors
+        for (int v = 0; v < size(); v++) { 
             int v_id = nodes_.at(v).id;
             bool is_edge = false;
             int dist;
@@ -145,7 +145,7 @@ void Graph::Print_Shortest_Paths() {
     }
 }
 
-void Graph::Print_A_Shortest_Path() { //you set the src node in the algo function
+void Graph::Print_A_Shortest_Path() { 
     cout << "Printing the Shortest path from end to src node" << endl;
     int i = end_idx;
       while (i == end_idx) {
