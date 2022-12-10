@@ -34,10 +34,39 @@ void testFull() {
     g2.printAdjLists();
 }
 
+void testShortEx1() {
+    Graph g;
+    for (int i = 0; i < 9; i++) {
+        g.addNode(i);
+    }
+    //outer edges
+    g.addEdge(0,1,4);
+    g.addEdge(1,2,8);
+    g.addEdge(2,3,7);
+    g.addEdge(3,4,9);
+    g.addEdge(0,7,8);
+    g.addEdge(7,6,1);
+    g.addEdge(6,5,2);
+    g.addEdge(5,4,10);
+    //inner edges
+    g.addEdge(7,8,7);
+    g.addEdge(7,1,11);
+    g.addEdge(6,8,6);
+    g.addEdge(8,2,2);
+    g.addEdge(2,5,4);
+    g.addEdge(5,3,14);
+    g.Shortest_Path_Algo(4); //src node is gonna be this argument 
+
+    g.printAdjLists();
+    g.Print_A_Shortest_Path(7); //shortest path from src node to 5
+    //https://www.geeksforgeeks.org/wp-content/uploads/Fig-11.jpg
+}
+
 int main() {
 
-    testSmall();
+    //testSmall();
     // testFull();
+    testShortEx1();
 
     return 0;
 }
