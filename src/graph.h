@@ -57,14 +57,14 @@ class Graph {
 
     // returns the ids of the nodes visited started from input node id in a bfs
     vector<int> BFS(int start_id);
-    vector<int> Shortest_Path_Algo(int start_idx);//for each v we give the shortest path
-    int Min_Dist(vector<int> distances, vector<bool> sp_set);
-    void Print_Short_Path_Distances(vector<int> distances);
-    void Print_Short_Path_Dist_Src_to_End(int end_idx);
-    void Print_Shortest_Paths(vector<int> parent);
-    void Print_A_Shortest_Path(int end_idx);
-
-
+    vector<int> Shortest_Path_Algo();//Dijkstras
+    int Min_Dist(vector<int> distances, vector<bool> sp_set); //helper function 
+    void Print_Short_Path_Distances();
+    void Print_Short_Path_Dist_Src_to_End();
+    void Print_Shortest_Paths();
+    void Print_A_Shortest_Path();
+    void set_start_end(int start, int end);
+    //write comments 
     private:
     vector<Node> nodes_;
     int src_node;
