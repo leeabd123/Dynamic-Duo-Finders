@@ -56,7 +56,7 @@ void testShortEx1() {
     g.addEdge(2,5,4);
     g.addEdge(5,3,14);
 
-    g.set_start_end(4, 8);
+    g.set_start_end(0, 4);
     g.printAdjLists();
 
     g.Shortest_Path_Algo(); 

@@ -140,6 +140,9 @@ void Graph::Print_Shortest_Paths() {
                cout << " -> " << parnode << " ";
                parnode = parent[parnode];
         }
+        if (src_node == 0) {
+            cout << "-> " << nodes_.at(0).id << endl;
+        }
         cout << endl;
 
     }
@@ -154,6 +157,9 @@ void Graph::Print_A_Shortest_Path() {
         while (parnode != parent[src_node]) {
                cout << " -> " << nodes_.at(parnode).id << " ";
                parnode = parent[parnode];
+        }
+        if (src_node == 0) {
+            cout << "-> " << nodes_.at(0).id << endl;
         }
         cout << endl;
         break;
