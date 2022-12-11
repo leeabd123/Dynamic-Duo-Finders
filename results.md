@@ -1,1 +1,26 @@
+# Results
+
+## Output and Correctness of Each Algorithm
+
+### Breadth First Search 
+
+
+
+### Dijkstra's
+
+The user gets to set the source node’s index and the end node index in our set_start_end function provided. In the shortest_path_algo function this function uses the source node to finds all shortest paths and their distances from every other node to the the source node. In the print_shortest_path_distances this function prints the distance of the shortest path between every vertex and the source node. The print_short_path_dist_src_to_end function prints the shortest path distance from the source node to the end node. The print_shortest_paths prints out the actual paths as a visual representation from each node to the source node. Lastly the print_shortest_path() prints out the shortest path between the source node to the end node as a visual representation.
+
+### Betweeness 
+
+
+## Tests Performed
+
+## Leading Question 
+
+Our leading question we hoped to solve was, What is the best way to get around the city? We answered this question by creating 3 functions using 3 different algorithms. The first one uses Dijsktras to find the shortest path between any 2 given roads. Another one uses BFS to return a path through the whole city. Our last function uses the betweeness algorithm to find the busiest interesection. We discovered some creative ways to use our functions. For instance if a user wanted to go on a fun adventure through the city our BFS function could generate a path that they can go explore through the city. Our Dijkstra's algorithm generates all possible shortest paths from every road to the source node. So if you're ever lost or just want to plan ahead you could use our function to show you the shortest path to anywhere in the city from where you are. Our Betweenness algorithm helps the user plan ahead for their trip. By giving the user the busiest intersection the user can then plan to avoid that certain intersection on their trip.
+
+
+
+
+
 
