@@ -34,6 +34,21 @@ void testFull() {
     g2.printAdjLists();
 }
 
+void testBetweennessSmall() {
+    Graph g;
+    for (int i = 0; i < 3; i++) {
+        g.addNode(i);
+    }
+    g.addEdge(0,1,1);
+    g.addEdge(0,2,1);
+    vector<int> scores = g.Betweenness();
+    int size = g.size();
+    std::cout << "Betweenness Scores: " << std::endl;
+    for (int i = 0; i < size; i++) {
+        std::cout << i << ": " << scores[i] << std::endl;
+    }
+}
+
 void testShortEx1() {
     Graph g;
     for (int i = 0; i < 9; i++) {
@@ -66,7 +81,8 @@ int main() {
 
     //testSmall();
     // testFull();
-    testShortEx1();
+    // testShortEx1();
+    testBetweennessSmall();
 
     return 0;
 }

@@ -156,12 +156,36 @@ void Graph::Print_A_Shortest_Path(int end_idx) { //you set the src node in the a
                cout << " -> " << nodes_.at(parnode).id << " ";
                parnode = parent[parnode];
         }
-        //cout << "-> " << nodes_.at(src_node).id;
+        // cout << "-> " << nodes_.at(src_node).id;
         cout << endl;
         break;
 
 
     }
+}
+
+// vector<int> Shortest_Path(int start, int end) {
+//     return vector<int>();
+// }
+
+// ------------ Betweenness Algo Stuff -------------------- // 
+vector<int> Graph::Betweenness() {
+    vector<vector<int>> traveled(size(), vector<int>(size(), 0));
+    vector<int> scores(size());
+    // for node in nodes_
+    for (Node node: nodes_) {
+        // for node in neighbors
+        for (pair<int, double> neighbor: node.neighbors) {
+            /// set traveled[node][neighbor] to traveled
+            traveled[node.id][neighbor.first] = 1;
+            traveled[neighbor.first][node.id] = 1;
+            /// get shortest path between node and neighbor
+
+            /// increment scores for all intermediate nodes in path
+
+        }
+    }
+    return scores;
 }
 
 
