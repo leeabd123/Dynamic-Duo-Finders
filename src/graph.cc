@@ -164,9 +164,10 @@ void Graph::Print_A_Shortest_Path(int end_idx) { //you set the src node in the a
     }
 }
 
-// vector<int> Shortest_Path(int start, int end) {
-//     return vector<int>();
-// }
+vector<int> Shortest_Path(int start, int end) {
+    std::cout << "getting shortest path from " << start << " to " << end << std::endl;
+    return vector<int>();
+}
 
 // ------------ Betweenness Algo Stuff -------------------- // 
 vector<int> Graph::Betweenness() {
@@ -180,8 +181,12 @@ vector<int> Graph::Betweenness() {
             traveled[node.id][neighbor.first] = 1;
             traveled[neighbor.first][node.id] = 1;
             /// get shortest path between node and neighbor
-
+            vector<int> path = Shortest_Path(node.id, neighbor.first);
             /// increment scores for all intermediate nodes in path
+            for (unsigned int i = 1; i < path.size() - 1; i++) {
+                int n = path[i];
+                scores[n] = scores[n] + 1;
+            }
 
         }
     }

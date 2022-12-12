@@ -64,7 +64,7 @@ class Graph {
     void Print_Shortest_Paths(vector<int> parent);
     void Print_A_Shortest_Path(int end_idx);
     vector<int> Betweenness(); // assign centrality scores to each node
-    // vector<int> Shortest_Path(int start, int end);
+    vector<int> Shortest_Path(int start, int end);
 
 
     private:
