@@ -20,3 +20,16 @@ Our written report is located in the results.md folder in our github repository
 Our presentation video is located in our results.md folder in our github repository and in our presentation link located n the results.md fodler.
 
 
+## Running Instructions ##
+
+In terminal run:
+
+**git clone https://github.com/leeabd123/Swashbuckling-Swaggering-Passageways/**
+
+**make**
+
+**bin/exec** To compile code 
+
+**./bin/tests** To run tests
+
+*
