@@ -165,8 +165,22 @@ void Graph::Print_A_Shortest_Path(int end_idx) { //you set the src node in the a
 }
 
 vector<int> Graph::Shortest_Path(int start, int end) {
+    std::vector<int> path;
     std::cout << "getting shortest path from " << start << " to " << end << std::endl;
-    return vector<int>();
+    Shortest_Path_Algo(start);
+    int i = end;
+      while (i == end) {
+        path.push_back(nodes_.at(i).id);
+        int parnode = parent[i];
+        while (parnode != parent[src_node]) {
+               path.push_back(nodes_.at(parnode).id);
+               parnode = parent[parnode];
+        }
+        // cout << "-> " << nodes_.at(src_node).id;
+        cout << endl;
+        break;
+    }
+    return path;
 }
 
 // ------------ Betweenness Algo Stuff -------------------- // 
