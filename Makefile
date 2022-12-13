@@ -7,7 +7,7 @@ tests: bin/tests
 bin/exec: ./src/graph.cc ./src/main.cc
 	$(CXX) $(CXX_FLAGS) $^ -o $@
 
-bin/tests: ./tests/tests.cc ./src/main.cc ./src/graph.cc
+bin/tests: ./tests/tests.cc ./src/graph.cc
 	$(CXX) $(CXX_FLAGS) $^ -o $@
 
 .DEFAULT_GOAL := exec

@@ -80,7 +80,7 @@ int Graph::Min_Dist(vector<int> distances, vector<bool> sp_set) {
     return min_index;
 }
 
-vector<int> Graph::Shortest_Path_Algo() {
+void Graph::Shortest_Path_Algo() {
     parent.resize(size());
     distances.resize(size());
     vector<bool> spset = vector<bool>(size());
@@ -111,8 +111,6 @@ vector<int> Graph::Shortest_Path_Algo() {
         }
 
     }
-    return parent;
-
 }
 void Graph::Print_Short_Path_Distances() {
     cout << endl;
@@ -130,6 +128,27 @@ void Graph::Print_Short_Path_Dist_Src_to_End() {
     cout << endl;
 
 }
+
+vector<int> Graph::A_Short_Path_Src_to_End() {
+    vector<int> a_path;
+    int i = end_idx;
+    while (i == end_idx) {
+        a_path.push_back(nodes_.at(i).id);
+        int parnode = parent[i];
+        while (parnode != parent[src_node]) {
+              a_path.push_back(nodes_.at(parnode).id);
+              parnode = parent[parnode];
+        }
+        if (src_node == 0) {
+            a_path.push_back(nodes_.at(0).id);
+        }
+        cout << endl;
+        break;
+    }
+    return a_path;
+}
+
+
 
 void Graph::Print_Shortest_Paths() { 
     cout << "Printing shortest paths to src node" << endl;
@@ -168,10 +187,13 @@ void Graph::Print_A_Shortest_Path() {
     }
 }
 
+//-------------------Betweeness--------------------------------//
+
+
 vector<int> Graph::Shortest_Path(int start, int end) {
     std::vector<int> path;
     std::cout << "getting shortest path from " << start << " to " << end << std::endl;
-    Shortest_Path_Algo(start);
+    //Shortest_Path_Algo(start);
     int i = end;
       while (i == end) {
         path.push_back(nodes_.at(i).id);
@@ -200,12 +222,12 @@ vector<int> Graph::Betweenness() {
                 traveled[node.id][neighbor.first] = 1;
                 traveled[neighbor.first][node.id] = 1;
                 /// get shortest path between node and neighbor
-                vector<int> path = Shortest_Path(node.id, neighbor.first);
+                //vector<int> path = Shortest_Path(node.id, neighbor.first);
                 /// increment scores for all intermediate nodes in path
-                for (unsigned int i = 1; i < path.size() - 1; i++) {
-                    int n = path[i];
-                    scores[n] = scores[n] + 1;
-                }
+                // for (unsigned int i = 1; i < path.size() - 1; i++) {
+                //     int n = path[i];
+                //     scores[n] = scores[n] + 1;
+                // }
             }
 
         }

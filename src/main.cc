@@ -9,6 +9,7 @@ void printTraversal(std::vector<int> traversal) {
     std::cout << std::endl;
 }
 void testSmall() {
+    cout << "1" << endl;
     Graph g;
     for (int i = 0; i < 5; i++) {
         g.addNode(i);
@@ -30,24 +31,34 @@ void testSmall() {
 
 void testFull() {
     // Need to initialize with filename
+    cout << "2" << endl;
+
     Graph g2("./data/Edge-StartNode-EndNode-Dist.csv");
     g2.printAdjLists();
 }
 void testShortestPathSmall() {
+    cout << "3" << endl;
+
     Graph g;
     for (int i = 0; i < 3; i++) {
         g.addNode(i);
     }
     g.addEdge(0,1,1);
     g.addEdge(0,2,1);
+    g.set_start_end(1,2);
+    g.printAdjLists();
+    g.Shortest_Path_Algo();
+    g.Print_A_Shortest_Path();
 
-    vector<int> path = g.Shortest_Path(1,2);
+    vector<int> path = g.A_Short_Path_Src_to_End();
     std::cout << "shortest path from 1 to 2" << std::endl;
     for (int v: path) {
         std::cout << v << std::endl;
     }
 }
 void testBetweennessSmall() {
+    cout << "4" << endl;
+
     Graph g;
     for (int i = 0; i < 3; i++) {
         g.addNode(i);

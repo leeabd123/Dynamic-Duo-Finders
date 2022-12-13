@@ -58,33 +58,52 @@ class Graph {
     // returns the ids of the nodes visited started from input node id in a bfs
     vector<int> BFS(int start_id);
 
-    // vector<int> Shortest_Path_Algo(int start_idx);//for each v we give the shortest path
-    // int Min_Dist(vector<int> distances, vector<bool> sp_set);
-    // void Print_Short_Path_Distances(vector<int> distances);
-    // void Print_Short_Path_Dist_Src_to_End(int end_idx);
-    // void Print_Shortest_Paths(vector<int> parent);
-    // void Print_A_Shortest_Path(int end_idx);
     vector<int> Betweenness(); // assign centrality scores to each node
     vector<int> Shortest_Path(int start, int end);
+      
+    //set the start and end node here for Dijkstra's algo
+    void set_start_end(int start, int end); 
+
+    //Dijkstra's algorithm
+    void Shortest_Path_Algo();
+
+    //helper funtion for Dijkstra's that finds the vertex with the min distance value 
+    //from a set of verticies not included yet in the shortest path
+    int Min_Dist(vector<int> distances, vector<bool> sp_set); 
+
+    //Prints all the distances of the shortest paths from each Nodes to the src node
+    void Print_Short_Path_Distances();
+
+    //Prints the distance of shortest path between the src node to the end node 
+    void Print_Short_Path_Dist_Src_to_End();
+
+    
+    //Returns a vector to the end of shortest path between the src node to the end node 
+    vector<int> A_Short_Path_Src_to_End();
+
+    //Prints all the shortest paths from each Node to the src node
+    void Print_Shortest_Paths();
+
+    //Prints the shortest path from the end node to the src node 
+    void Print_A_Shortest_Path();
+
     
 
-
-
-    vector<int> Shortest_Path_Algo();//Dijkstras
-    int Min_Dist(vector<int> distances, vector<bool> sp_set); //helper function 
-    void Print_Short_Path_Distances();
-    void Print_Short_Path_Dist_Src_to_End();
-    void Print_Shortest_Paths();
-    void Print_A_Shortest_Path();
-    void set_start_end(int start, int end);
-    //write comments 
-
     private:
+      //a vector of all the nodes
     vector<Node> nodes_;
+
+    //the idx of the src node
     int src_node;
+
+    //parent of a node, the node that comes before a certain node based off the shortest path of the tree
     vector<int> parent;
+
+    //vector of distances that each node is from the src node
     vector<int> distances; 
-    // int end_idx; 
+
+    //the idx of the end node
+    int end_idx; 
 
 };
 
