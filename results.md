@@ -4,6 +4,7 @@
 
 ### Breadth First Search 
 
+Our BFS algorithm takes a start_id that the user can set. Our BFS takes the start_id then generates a possible path through the whole city using the breadth first search algorithm. It then returns a vector of ints which are road ids.  
 
 
 ### Dijkstra's
@@ -14,6 +15,7 @@ The user gets to set the source node’s index and the end node index in our set
 
 
 ## Tests Performed
+
 
 ## Leading Question 
 
