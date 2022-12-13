@@ -13,6 +13,7 @@ The user gets to set the source node’s index and the end node index in our set
 
 ### Betweeness 
 
+This function gets the shortest path from each pair of nodes in the graph and returns a vector with a count of how many times a node lies on one of these paths. The shortest paths are found by setting the start and end nodes and then calling Dijkstra's algorithm to get the shortest path between them as a vector. It marks that path as traveled, iterates through the path vector and increments the count for that node.
 
 ## Tests Performed
 
