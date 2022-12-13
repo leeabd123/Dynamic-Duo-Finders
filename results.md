@@ -17,14 +17,23 @@ This function gets the shortest path from each pair of nodes in the graph and re
 
 ## Tests Performed
 TEST SMALL BFS SIZE - test that BFS has the right size
+
 TEST SMALL BFS TRAVERSAL - test that BFS has the right traversal for a small graph
+
 TEST NORMAL BFS TRAVERSAL - test that BFS has the right traversal for a small graph
+
 TEST LARGE BFS START NODE - test that the large BFS has the right start node
+
 TEST LARGE BFS ADJACENT NODES - test that the large BFS has the right adjacent nodes to a node we were testing
+
 TEST DIJKSTRA'S WITH ONE POSSIBLE PATH - Dijkstra's when only one path is possible
+
 TEST DIJKSTRA'S BEST OF MULTIPLE PATHS - Dijkstra's when choosing between paths
+
 TEST DIJKSTRA'S FULL - Dijkstra's specifics with full graph (test small parts)
+
 TEST BETWEENNESS SMALL - gives proper scores for betweenness on a small graph
+
 TEST BETWEENNESS SMALL SIZE - betweenness returns a vector of the right size
 
 ## Leading Question 
