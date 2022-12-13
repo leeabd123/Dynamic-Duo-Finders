@@ -22,14 +22,19 @@ Our presentation video is located in our results.md folder in our github reposit
 
 ## Running Instructions ##
 
-In terminal run:
+Input data CSVs go into the data folder.
+To make a graph out of them you can go to main and call the Graph constructor with the file name passed to it. There you can also run our algorithms. We have sample code there that does that for each algorithm and prints the resutls.
 
+
+In terminal run:
 **git clone https://github.com/leeabd123/Swashbuckling-Swaggering-Passageways/**
 
+To execute the code in main run:
 **make**
 **bin/exec** To run main (we have some functions that you can mess around with)
 
+To run our tests run:
 **make tests**
 **./bin/tests** To run tests 
 
-*
+Note: We have had trouble with our bin folder. It should be there but if it isn't you may need to create a folder called bin from the main repo.
