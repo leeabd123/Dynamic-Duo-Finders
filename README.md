@@ -85,3 +85,7 @@ If there is a disagreement between members we will host a meeting and talk it th
 Shams
 Leena
 Abena
+
+## Presentation Link
+
+https://docs.google.com/presentation/d/1pmrxRiKhYZx2S0FK9ypu37MYbXszisF8byV3sD3hXig/edit#slide=id.g1b54e8f1215_0_0
