@@ -60,6 +60,12 @@ vector<int> Graph::BFS(int start_id) {
 }
 // ------------ Dijkstra's Algo Stuff -------------------- // 
 
+void Graph::set_start_end(int start, int end) {
+    src_node = start;
+    end_idx = end;
+}
+
+
 int Graph::Min_Dist(vector<int> distances, vector<bool> sp_set) {
     int min = 2147483647;
     int min_index;
@@ -74,7 +80,7 @@ int Graph::Min_Dist(vector<int> distances, vector<bool> sp_set) {
     return min_index;
 }
 
-vector<int> Graph::Shortest_Path_Algo(int start_idx) {
+vector<int> Graph::Shortest_Path_Algo() {
     parent.resize(size());
     distances.resize(size());
     vector<bool> spset = vector<bool>(size());
@@ -83,12 +89,11 @@ vector<int> Graph::Shortest_Path_Algo(int start_idx) {
         spset[i] = false;
 
     }
-    distances[start_idx] = 0; //setting the first to 0 the rest to inf
-    src_node = start_idx;
+    distances[src_node] = 0; 
     for (int c = 0; c < (size() - 1); c++) {
-        int u = Min_Dist(distances, spset); //picking the index of vertex with the min distane value 
+        int u = Min_Dist(distances, spset); 
         spset[u] = true;
-        for (int v = 0; v < size(); v++) { //update the values of its neighbors
+        for (int v = 0; v < size(); v++) { 
             int v_id = nodes_.at(v).id;
             bool is_edge = false;
             int dist;
@@ -106,14 +111,10 @@ vector<int> Graph::Shortest_Path_Algo(int start_idx) {
         }
 
     }
-    Print_Shortest_Paths(parent);
-    Print_Short_Path_Distances(distances);
-
     return parent;
 
 }
-void Graph::Print_Short_Path_Distances(vector<int> distances) {
-    cout << "Vertex and shortest distance from source. " << "Source: " << src_node << endl;
+void Graph::Print_Short_Path_Distances() {
     cout << endl;
     for (int i = 0; i < size(); i++) {
         cout << "Vertex: " << nodes_.at(i).id << ", ";
@@ -122,17 +123,16 @@ void Graph::Print_Short_Path_Distances(vector<int> distances) {
     }
 }
 
-void Graph::Print_Short_Path_Dist_Src_to_End(int end_idx) {
-    cout << "Vertex and shortest distance from source. " << "Source: " << src_node << endl;
+void Graph::Print_Short_Path_Dist_Src_to_End() {
     cout << endl;
-    for (int i = 0; i <= end_idx; i++) {
-        cout << "Vertex: " << nodes_.at(i).id << ", ";
-        cout << "Dist from " << src_node << ": " << distances[i] << endl;
-        cout << endl;
-    }
+    cout << "Vertex: " << nodes_.at(end_idx).id << ", ";
+    cout << "Dist from " << src_node << ": " << distances[end_idx] << endl;
+    cout << endl;
+
 }
 
-void Graph::Print_Shortest_Paths(vector<int> parent) { 
+void Graph::Print_Shortest_Paths() { 
+    cout << "Printing shortest paths to src node" << endl;
     for (int i = 0; i < size(); i++) {
         cout << nodes_.at(i).id << " ";
         int parnode = parent[i];
@@ -140,14 +140,16 @@ void Graph::Print_Shortest_Paths(vector<int> parent) {
                cout << " -> " << parnode << " ";
                parnode = parent[parnode];
         }
-        //cout << "-> " << src_node;
+        if (src_node == 0) {
+            cout << "-> " << nodes_.at(0).id << endl;
+        }
         cout << endl;
 
     }
 }
 
-void Graph::Print_A_Shortest_Path(int end_idx) { //you set the src node in the algo function
-    cout << "Printing A shortest path" << endl;
+void Graph::Print_A_Shortest_Path() { 
+    cout << "Printing the Shortest path from end to src node" << endl;
     int i = end_idx;
       while (i == end_idx) {
         cout << nodes_.at(i).id << " ";
@@ -156,7 +158,9 @@ void Graph::Print_A_Shortest_Path(int end_idx) { //you set the src node in the a
                cout << " -> " << nodes_.at(parnode).id << " ";
                parnode = parent[parnode];
         }
-        //cout << "-> " << nodes_.at(src_node).id;
+        if (src_node == 0) {
+            cout << "-> " << nodes_.at(0).id << endl;
+        }
         cout << endl;
         break;
 

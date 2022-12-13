@@ -55,12 +55,20 @@ void testShortEx1() {
     g.addEdge(8,2,2);
     g.addEdge(2,5,4);
     g.addEdge(5,3,14);
-    g.Shortest_Path_Algo(4); //src node is gonna be this argument 
 
+    g.set_start_end(0, 4);
     g.printAdjLists();
-    g.Print_A_Shortest_Path(7); //shortest path from src node to 5
+
+    g.Shortest_Path_Algo(); 
+    g.Print_A_Shortest_Path(); 
+    g.Print_Short_Path_Dist_Src_to_End();
+    g.Print_Short_Path_Distances();
+    g.Print_Shortest_Paths();
+    
     //https://www.geeksforgeeks.org/wp-content/uploads/Fig-11.jpg
+    //^^ the graph I was using to test my code 
 }
+
 
 int main() {
 
