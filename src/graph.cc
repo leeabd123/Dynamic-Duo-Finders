@@ -168,6 +168,51 @@ void Graph::Print_A_Shortest_Path() {
     }
 }
 
+vector<int> Graph::Shortest_Path(int start, int end) {
+    std::vector<int> path;
+    std::cout << "getting shortest path from " << start << " to " << end << std::endl;
+    Shortest_Path_Algo(start);
+    int i = end;
+      while (i == end) {
+        path.push_back(nodes_.at(i).id);
+        int parnode = parent[i];
+        while (parnode != parent[src_node]) {
+               path.push_back(nodes_.at(parnode).id);
+               parnode = parent[parnode];
+        }
+        // cout << "-> " << nodes_.at(src_node).id;
+        cout << endl;
+        break;
+    }
+    return path;
+}
+
+// ------------ Betweenness Algo Stuff -------------------- // 
+vector<int> Graph::Betweenness() {
+    vector<vector<int>> traveled(size(), vector<int>(size(), 0));
+    vector<int> scores(size());
+    // for node in nodes_
+    for (Node node: nodes_) {
+        // for node in neighbors
+        for (pair<int, double> neighbor: node.neighbors) {
+            if (traveled[node.id][neighbor.first] == 0) { // path not already traveled
+                /// set this path to traveled (both ways)
+                traveled[node.id][neighbor.first] = 1;
+                traveled[neighbor.first][node.id] = 1;
+                /// get shortest path between node and neighbor
+                vector<int> path = Shortest_Path(node.id, neighbor.first);
+                /// increment scores for all intermediate nodes in path
+                for (unsigned int i = 1; i < path.size() - 1; i++) {
+                    int n = path[i];
+                    scores[n] = scores[n] + 1;
+                }
+            }
+
+        }
+    }
+    return scores;
+}
+
 
 // ------------- Parsing Stuff ------------------------- //
 std::string file_to_string(const std::string& filename){
