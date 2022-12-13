@@ -27,9 +27,9 @@ In terminal run:
 **git clone https://github.com/leeabd123/Swashbuckling-Swaggering-Passageways/**
 
 **make**
+**bin/exec** To run main (we have some functions that you can mess around with)
 
-**bin/exec** To compile code 
-
-**./bin/tests** To run tests
+**make tests**
+**./bin/tests** To run tests 
 
 *
