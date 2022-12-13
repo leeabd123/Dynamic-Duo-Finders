@@ -14,6 +14,7 @@
 #include <set>
 #include <cassert>
 #include <fstream>
+#include<algorithm>
 // #include <ArrayList>
 
 using namespace std;
