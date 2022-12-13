@@ -80,7 +80,7 @@ int Graph::Min_Dist(vector<int> distances, vector<bool> sp_set) {
     return min_index;
 }
 
-vector<int> Graph::Shortest_Path_Algo() {
+void Graph::Shortest_Path_Algo() {
     parent.resize(size());
     distances.resize(size());
     vector<bool> spset = vector<bool>(size());
@@ -111,8 +111,6 @@ vector<int> Graph::Shortest_Path_Algo() {
         }
 
     }
-    return parent;
-
 }
 void Graph::Print_Short_Path_Distances() {
     cout << endl;
@@ -130,6 +128,27 @@ void Graph::Print_Short_Path_Dist_Src_to_End() {
     cout << endl;
 
 }
+
+vector<int> Graph::A_Short_Path_Src_to_End() {
+    vector<int> a_path;
+    int i = end_idx;
+    while (i == end_idx) {
+        a_path.push_back(nodes_.at(i).id);
+        int parnode = parent[i];
+        while (parnode != parent[src_node]) {
+              a_path.push_back(nodes_.at(parnode).id);
+              parnode = parent[parnode];
+        }
+        if (src_node == 0) {
+            a_path.push_back(nodes_.at(0).id);
+        }
+        cout << endl;
+        break;
+    }
+    return a_path;
+}
+
+
 
 void Graph::Print_Shortest_Paths() { 
     cout << "Printing shortest paths to src node" << endl;
@@ -167,7 +186,6 @@ void Graph::Print_A_Shortest_Path() {
 
     }
 }
-
 
 // ------------- Parsing Stuff ------------------------- //
 std::string file_to_string(const std::string& filename){
